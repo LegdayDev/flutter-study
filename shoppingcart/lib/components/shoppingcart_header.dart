@@ -27,10 +27,40 @@ class _ShoppingCartHeaderState extends State<ShoppingCartHeader> {
     );
   }
 
-  Widget _buildHeaderPic(){
-    return SizedBox();
+  Widget _buildHeaderPic() {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: AspectRatio(
+          aspectRatio: 5 / 3,
+          child: Image.asset(
+              selectedPic[selectedId],
+              fit: BoxFit.cover
+          )),
+    );
   }
-  Widget _buildHeaderSelector(){
-    return SizedBox();
+
+  Widget _buildHeaderSelector() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        _buildHeaderSelectorButton(0),
+        _buildHeaderSelectorButton(1),
+        _buildHeaderSelectorButton(2),
+        _buildHeaderSelectorButton(3),
+      ],
+    );
+  }
+
+  Widget _buildHeaderSelectorButton(int id) {
+    return IconButton(
+        onPressed: () {
+          setState(() {
+            selectedId = id;
+          });
+        },
+        icon: Icon(
+          Icons.directions_bike,
+          color: Colors.black,)
+    );
   }
 }
